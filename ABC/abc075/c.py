@@ -32,20 +32,25 @@ class unionfind:
 		return self.root(u) == self.root(v)
 
 
+N, M = map(int, input().split())
 
-N, Q = map(int, input().split())
+edges = []
+for i in range(M):
+  a, b = map(int, input().split())
+  edges.append((a, b))
 
-queries = []
-for i in range(Q):
-  inp = list(map(int, input().split()))
-  queries.append(inp)
+cnt = 0
 
-uf = unionfind(N)
-for tp, u, v in queries:
-  if tp == 1:
-    uf.unite(u, v)
-  if tp == 2:
-    if uf.same(u, v):
-      print('Yes')
-    else:
-      print('No')
+# 注目する辺
+for i in range(M):
+  uf = unionfind(N)
+  # 注目する辺以外の全ての辺をつなぐ
+  for j in range(M):
+    if i != j:
+      a, b = edges[j]
+      uf.unite(a, b)
+  a, b = edges[i]
+  if not uf.same(a, b):
+    cnt += 1
+
+print(cnt)

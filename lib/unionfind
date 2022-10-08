@@ -30,22 +30,3 @@ class unionfind:
 	#  要素 u と v が同一のグループかどうかを返す関数
 	def same(self, u, v):
 		return self.root(u) == self.root(v)
-
-
-
-N, Q = map(int, input().split())
-
-queries = []
-for i in range(Q):
-  inp = list(map(int, input().split()))
-  queries.append(inp)
-
-uf = unionfind(N)
-for tp, u, v in queries:
-  if tp == 1:
-    uf.unite(u, v)
-  if tp == 2:
-    if uf.same(u, v):
-      print('Yes')
-    else:
-      print('No')

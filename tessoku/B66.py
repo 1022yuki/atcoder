@@ -32,20 +32,46 @@ class unionfind:
 		return self.root(u) == self.root(v)
 
 
-
-N, Q = map(int, input().split())
-
+N, M = map(int, input().split())
+road = []
+for i in range(M):
+  a, b = map(int, input().split())
+  road.append((a, b))
+Q = int(input())
 queries = []
 for i in range(Q):
   inp = list(map(int, input().split()))
   queries.append(inp)
 
 uf = unionfind(N)
-for tp, u, v in queries:
-  if tp == 1:
-    uf.unite(u, v)
-  if tp == 2:
+
+# 最後に運休になっている路線
+cancelled = [False]*(M+1)
+for i in range(Q):
+  if queries[i][0] == 1:
+    x = queries[i][1]
+    cancelled[x] = True
+
+for i in range(M):
+  a, b = road[i]
+  if cancelled[i+1] == False and uf.same(a, b) == False:
+    uf.unite(a, b)
+
+ans = []
+
+for i in range(Q-1, -1, -1):
+  if queries[i][0] == 1:
+    x = queries[i][1]
+    a, b = road[x-1]
+    uf.unite(a, b)
+
+  if queries[i][0] == 2:
+    u, v = queries[i][1:]
     if uf.same(u, v):
-      print('Yes')
+      ans.append('Yes')
     else:
-      print('No')
+      ans.append('No')
+
+# print(ans)
+for i in range(len(ans)-1, -1, -1):
+  print(ans[i])
