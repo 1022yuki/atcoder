@@ -1,0 +1,16 @@
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+dp = [False]*(N+1)
+dp[0] = False
+
+for i in range(1, N+1):
+  for a in A:
+    if i>=a and dp[i-a] == False:
+      dp[i] = True
+      break
+
+if dp[N]:
+  print('First')
+else:
+  print('Second')
