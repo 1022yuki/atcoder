@@ -1,6 +1,5 @@
 from bisect import bisect_left
 
-
 H, W, rs, cs = map(int, input().split())
 N = int(input())
 R = []
@@ -16,18 +15,6 @@ for i in range(Q):
   d, l = map(str, input().split())
   D.append(d)
   L.append(int(l))
-
-# grid = []
-# grid.append([0]*(W+1))
-# for i in range(H):
-#   grid.append([0]+['.']*W)
-
-# for i in range(N):
-#   r = R[i]
-#   c = C[i]
-#   grid[r][c] = '#'
-
-# print(grid)
 
 wl = [[0]]
 wc = [[0]]

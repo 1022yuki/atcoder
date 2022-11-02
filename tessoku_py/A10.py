@@ -9,25 +9,19 @@ for i in range(D):
   L.append(l)
   R.append(r)
 
-# 左側からの累積max
-# 1-indexed
-P = [0]*(N+1)
-# 右側からの累積max
-Q = [0]*(N+1)
+# 左からi部屋までのmax
+l_max = [0]
+# 右からi部屋までのmax
+r_max = [0]
 
-P[1] = A[0]
-Q[N] = A[N-1]
+for i in range(N):
+  l_max.append(max(l_max[-1], A[i]))
+  r_max.append(max(r_max[-1], A[N-i-1]))
 
-for i in range(2, N+1):
-  P[i] = max(P[i-1], A[i-1])
-
-for i in range(N-1, 0, -1):
-  Q[i] = max(Q[i+1], A[i-1])
-
-# print(P)
-# print(Q)
+# print(l_max)
+# print(r_max)
 
 for i in range(D):
-  l, r = L[i], R[i]
-  ans = max(P[l-1], Q[r+1])
-  print(ans)
+  l_data = l_max[L[i]-1]
+  r_data = r_max[N-R[i]]
+  print(max(l_data, r_data))
