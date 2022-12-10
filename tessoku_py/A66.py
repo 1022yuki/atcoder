@@ -41,11 +41,11 @@ for i in range(Q):
   queries.append(inp)
 
 uf = unionfind(N)
-for tp, u, v in queries:
-  if tp == 1:
-    uf.unite(u, v)
-  if tp == 2:
-    if uf.same(u, v):
-      print('Yes')
-    else:
-      print('No')
+for num, u, v in queries:
+	if num == 1:
+		uf.unite(u, v)
+	if num == 2:
+		if uf.same(u, v):
+			print('Yes')
+		else:
+			print('No')

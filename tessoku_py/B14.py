@@ -1,38 +1,40 @@
-from collections import defaultdict
-
-
 N, K = map(int, input().split())
 A = list(map(int, input().split()))
 
 B = []
 C = []
 for i in range(N):
-  if i % 2 == 0:
+  if i%2==0:
     B.append(A[i])
   else:
     C.append(A[i])
 
 def has_bit(n, i):
-  return n & 1<<i > 0
+  return n & (1<<i) > 0
 
-dict = defaultdict(int)
+from collections import defaultdict
 
-for n in range(1<<len(B)):
-  sum = 0
+dic = defaultdict(int)
+
+for n1 in range(1<<(len(B))):
+  sum1 = 0
   for i in range(len(B)):
-    if has_bit(n, i):
-      sum += B[i]
-  dict[sum] += 1
+    if has_bit(n1, i):
+      sum1 += B[i]
+  dic[sum1] += 1
 
-ans = 0
-for n in range(1<<len(C)):
-  sum = 0
-  for i in range(len(C)):
-    if has_bit(n, i):
-      sum += C[i]
-  ans += dict[K-sum]
+# print(B)
+# print(C)
+# print(dic)
 
-if ans >= 1:
-  print('Yes')
-else:
-  print('No')
+for n2 in range(1<<(len(C))):
+  sum2 = 0
+  for j in range(len(C)):
+    if has_bit(n2, j):
+      sum2 += C[j]
+  print(sum2)
+  if dic[K-sum2] != 0:
+    print('Yes')
+    exit()
+
+print('No')

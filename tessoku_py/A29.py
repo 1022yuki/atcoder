@@ -8,7 +8,9 @@ def power(a, b, m):
   # rangeの部分はb<2**rangeになるように調整
   for i in range(30):
     if has_bit(b, i):
+      # bitが立っていたら答えにpを掛けてmで割る
       Answer = (Answer*p) % m
+    # pはa^2, a^4, a^8,...
     p = (p * p) % m
   return Answer
 

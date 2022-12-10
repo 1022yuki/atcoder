@@ -30,7 +30,7 @@ while len(Q) > 0:
   #4つの隣マスを確認する
   for i2, j2 in [[i+1, j], [i-1, j], [i, j+1], [i, j-1]]:
     # もし盤面の範囲内でなければ無視する
-    if not 0 <= i2 < R and 0<= j2 < C:
+    if not (0 <= i2 < R and 0<= j2 < C):
       continue
     # もし壁マスであれば無視する
     if S[i2][j2] == '#':

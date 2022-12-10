@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 N, K = map(int, input().split())
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))
@@ -13,8 +12,6 @@ for i in range(N):
   for j in range(N):
     sum_ab = A[i]+B[j]
     dict[sum_ab] += 1
-
-# print(dict)
 
 ans = 0
 

@@ -7,9 +7,9 @@ X = sorted(list(set(A)))
 
 # print(X)
 
-B = [None] * N
+B = []
 
 for i in range(N):
-  B[i] = bisect.bisect_right(X, A[i])
+  B.append(bisect.bisect_left(X, A[i])+1)
 
 print(*B)

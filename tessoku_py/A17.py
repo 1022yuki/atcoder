@@ -2,29 +2,27 @@ N = int(input())
 A = [0]*2 + list(map(int, input().split()))
 B = [0]*3 + list(map(int, input().split()))
 
-dp = [None] * (N+1)
+dp = [10**10]*(N+1)
 dp[1] = 0
-dp[2] = A[2]
 
-for i in range(3, N+1):
-  dp[i] = min(dp[i-1]+A[i], dp[i-2]+B[i])
+for i in range(2, N+1):
+  if i>=3:
+    dp[i] = min(dp[i], dp[i-2]+B[i])
+  dp[i] = min(dp[i], dp[i-1]+A[i])
 
 # print(dp)
 
-Ans = []
-Place = N
-while True:
-  Ans.append(Place)
-  if Place == 1:
-    break
-  if dp[Place] == dp[Place-1] + A[Place]:
-    Place -= 1
+now = N
+ans = [N]
+
+while now>1:
+  if dp[now] == dp[now-2]+B[now] and now>=3:
+    now -= 2
   else:
-    Place -= 2
+    now -= 1
+  ans.append(now)
 
-# print(Ans)
+ans.reverse()
 
-Ans.reverse()
-
-print(len(Ans))
-print(*Ans)
+print(len(ans))
+print(*ans)
