@@ -1,21 +1,24 @@
 from collections import deque
 
 N, X = map(int, input().split())
-A = list(input())
+A = [None]+list(input())
 
-que = deque()
-que.append(X)
-A[X-1] = '@'
+# print(A)
 
-print(A)
+queue = deque()
+queue.append(X)
 
-while len(que)!=0:
-  pos = que.popleft()
-  if A[pos-2] == '.':
-    que.append(pos-1)
-    A[pos-2] = '@'
-  if A[pos] == '.':
-    que.append(pos+1)
-    A[pos] = '@'
+A[X] = "@"
 
-print(A)
+# print(A)
+
+while len(queue)>0:
+  ind = queue.popleft()
+  if ind-1>=1 and A[ind-1] == ".":
+    A[ind-1] = "@"
+    queue.append(ind-1)
+  if ind+1<=N and A[ind+1] == ".":
+    A[ind+1] = "@"
+    queue.append(ind+1)
+
+print("".join(A[1:]))

@@ -3,23 +3,25 @@ import heapq
 N, M = map(int, input().split())
 
 edges = []
-for i in range(N+1):
+for i in range(N):
   edges.append([])
 for i in range(M):
   a, b, c = map(int, input().split())
+  a -= 1
+  b -= 1
   edges[a].append([c, b])
   edges[b].append([c, a])
 
-# print(edges)
+print(edges)
 
-dist = [-1]*(N+1)
-dist[1] = 0
+dist = [-1]*N
+dist[0] = 0
 
-done = [False] * (N+1)
+done = [False]*N
 
 Q = []
 
-heapq.heappush(Q, (0, 1))
+heapq.heappush(Q, (0, 0))
 
 while len(Q)>0:
   d, i = heapq.heappop(Q)
@@ -38,5 +40,5 @@ while len(Q)>0:
 
 # print(dist)
 
-for i in range(1, N+1):
+for i in range(N):
   print(dist[i])

@@ -1,7 +1,7 @@
 N = int(input())
 
 left = 1
-right = 10**5
+right = 10**2
 
 while abs(right-left) > 0.001:
   mid = (left+right) / 2

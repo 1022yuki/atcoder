@@ -1,34 +1,20 @@
 N, K = map(int, input().split())
 A = list(map(int, input().split()))
 
-def bin_search(n):
-  ok = -1
-  ng = K
-  while abs(ng-ok)>1:
-    mid = (ok+ng)//2
-    if A[mid] <= n:
-      ok = mid
-    else:
-      ng = mid
+dp = []
+for i in range(2):
+  dp.append([0]*(N+1))
 
-  # n -= A[ok]
-  return A[ok]
+# print(dp)
 
-takahashi = 0
-aoki = 0
-cnt = 0
-while N>0:
-  if cnt % 2 == 0:
-    # print(N)
-    ret = bin_search(N)
-    takahashi += ret
-    N -= ret
-  else:
-    # print(N)
-    ret = bin_search(N)
-    aoki += ret
-    N -= ret
+for n in range(N+1):
+  for i in range(2):
+    for k in range(K):
+      if i==0:
+        next = 1
+      else:
+        next = 0
+      if n >= A[k]:
+        dp[i][n] = max(dp[i][n], n-dp[next][n-A[k]])
 
-  cnt += 1
-
-# print(takahashi)
+print(dp[0][N])

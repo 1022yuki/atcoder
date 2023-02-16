@@ -14,8 +14,9 @@ for i in range(Q):
   if query[0] == '1':
     stuck.append(query[1])
   if query[0] == '2':
-    op = stuck.pop()
-    print(op)
-    stuck.append(op)
+    # op = stuck.pop()
+    # print(op)
+    # stuck.append(op)
+    print(stuck[-1])
   if query[0] == '3':
     stuck.pop()

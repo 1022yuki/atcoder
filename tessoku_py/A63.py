@@ -10,8 +10,8 @@ for i in range(M):
   edges[a].append(b)
   edges[b].append(a)
 
-dist = [-1]*N
-dist[0] = 0
+dist = [-1]*(N+1)
+dist[1] = 0
 
 Q = deque()
 Q.append(1)
@@ -19,9 +19,9 @@ Q.append(1)
 while len(Q)>0:
   i = Q.popleft()
   for x in edges[i]:
-    if dist[x-1] == -1:
-      dist[x-1] = dist[i-1] + 1
+    if dist[x] == -1:
+      dist[x] = dist[i] + 1
       Q.append(x)
 
-for ans in dist:
-  print(ans)
+for i in range(1, N+1):
+  print(dist[i])

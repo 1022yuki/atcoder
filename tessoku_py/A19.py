@@ -13,7 +13,9 @@ dp[0][0] = 0
 
 for i in range(1, N+1):
   for j in range(W+1):
+    # 品物iを選ばない
     dp[i][j] = max(dp[i][j], dp[i-1][j])
+    # 品物iを選ぶ
     if j-item[i-1][0]>=0:
       dp[i][j] = max(dp[i][j], dp[i-1][j-item[i-1][0]]+item[i-1][1])
 

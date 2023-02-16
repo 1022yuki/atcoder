@@ -17,6 +17,8 @@ for i in range(R):
   dist.append([-1]*C)
 dist[si][sj] = 0
 
+print(dist)
+
 Q = deque()
 Q.append([si, sj])
 

@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 # Union-Find 木
 class unionfind:
 	# n 頂点の Union-Find 木を作成
@@ -30,3 +32,9 @@ class unionfind:
 	#  要素 u と v が同一のグループかどうかを返す関数
 	def same(self, u, v):
 		return self.root(u) == self.root(v)
+
+	def all_group_members(self):
+		group_members = defaultdict(list)
+		for member in range(self.n):
+				group_members[self.root(member)].append(member)
+		return group_members

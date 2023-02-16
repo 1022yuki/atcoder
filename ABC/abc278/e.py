@@ -1,3 +1,6 @@
+import sys
+def input(): return sys.stdin.readline()[:-1]
+
 from collections import defaultdict
 H, W, N, h, w = map(int, input().split())
 
