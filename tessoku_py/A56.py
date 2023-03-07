@@ -1,7 +1,7 @@
 N, Q = map(int, input().split())
 S = input()
 
-mod = 2147483647
+mod = 998244353
 
 A = []
 B = []
@@ -43,6 +43,8 @@ def hash_val(l, r):
 
 for i in range(Q):
   a, b, c, d = A[i], B[i], C[i], D[i]
+  # print(hash_val(a, b))
+  # print(hash_val(c, d))
   if hash_val(a, b) == hash_val(c, d):
     print('Yes')
   else:

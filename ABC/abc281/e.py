@@ -110,18 +110,43 @@ class MultiSet:
 N, M, K = map(int, input().split())
 A = list(map(int, input().split()))
 
-ms = MultiSet(compress=A, multi=True)
+ms_l = MultiSet(compress=A, multi=True)
+ms_r = MultiSet(compress=A, multi=True)
+
+A_fir = A[:M]
+A_fir.sort()
+# print(A_fir)
+sum = 0
+
 for i in range(M):
-  ms.add(A[i])
+  if i<K:
+    ms_l.add(A_fir[i])
+    sum += A_fir[i]
+  else:
+    ms_r.add(A_fir[i])
+
 
 for i in range(N-M+1):
-  # print(ms)
-  sum=0
-  for j in range(K):
-    sum += ms[j]
+  # print(ms_l)
+  # print(ms_r)
   print(sum)
   if i != N-M:
-    ms.remove(A[i])
-    ms.add(A[i+M])
-
-# print(ms)
+    add = A[i+M]
+    rem = A[i]
+    # print(add, rem)
+    if add < ms_l[-1]:
+      sum += add
+      ms_l.add(add)
+      ms_r.add(ms_l[-1])
+      sum -= ms_l[-1]
+      ms_l.remove(ms_l[-1])
+    else:
+      ms_r.add(add)
+    if rem <= ms_l[-1]:
+      sum -= rem
+      ms_l.remove(rem)
+      sum += ms_r[0]
+      ms_l.add(ms_r[0])
+      ms_r.remove(ms_r[0])
+    else:
+      ms_r.remove(rem)

@@ -1,3 +1,4 @@
+# 区間max
 # セグメント木（ここでは書籍とは異なり、pos が 0-indexed になるように実装しています）
 class segtree:
 	# 要素 dat の初期化を行う（最初は全部ゼロ）
@@ -27,24 +28,24 @@ class segtree:
 		answerr = self.query(l, r, m, b, u * 2 + 1)
 		return answerl + answerr
 
+
 N, Q = map(int, input().split())
 
-Z = segtree(N)
-
-queries = []
+qs = []
 for i in range(Q):
-  inp = list(map(int, input().split()))
-  queries.append(inp)
+	q = list(map(int, input().split()))
+	qs.append(q)
+
+st = segtree(N+1)
 
 for i in range(Q):
-  query = queries[i]
-  if query[0] == 1:
-    pos = query[1]
-    x = query[2]
-    Z.update(pos-1, x)
-
-  if query[0] == 2:
-    l = query[1]
-    r = query[2]
-    ans = Z.query(l-1, r-1, 0, Z.size, 1)
-    print(ans)
+	q = qs[i]
+	if q[0] == 1:
+		pos = q[1]
+		x = q[2]
+		st.update(pos, x)
+	
+	if q[0] == 2:
+		l = q[1]
+		r = q[2]
+		print(st.query(l, r, 0, st.size, 1))

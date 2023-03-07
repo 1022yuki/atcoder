@@ -1,97 +1,89 @@
-from bisect import bisect_left
-
+import bisect
+from collections import defaultdict
 H, W, rs, cs = map(int, input().split())
 N = int(input())
-R = []
-C = []
+
+rs -= 1
+cs -= 1
+
+R = defaultdict(list)
+C = defaultdict(list)
 for i in range(N):
   r, c = map(int, input().split())
-  R.append(r)
-  C.append(c)
+  r -= 1
+  c -= 1
+  R[r].append(c)
+  C[c].append(r)
+
+for item in R.values():
+  item.append(-1)
+  item.append(W)
+  item.sort()
+
+for item in C.values():
+  item.append(-1)
+  item.append(H)
+  item.sort()
+
 Q = int(input())
 D = []
 L = []
 for i in range(Q):
-  d, l = map(str, input().split())
+  d, st_l = map(str, input().split())
+  l = int(st_l)
   D.append(d)
-  L.append(int(l))
-
-wl = [[0]]
-wc = [[0]]
-
-for i in range(H):
-  li = [0]
-  wl.append(li)
-for i in range(W):
-  li = [0]
-  wc.append(li)
-
-for i in range(N):
-  r = R[i]
-  c = C[i]
-  wl[r].append(c)
-  wc[c].append(r)
-
-for i in range(1, H+1):
-  wl[i].append(H+1)
-for i in range(1, W+1):
-  wc[i].append(W+1)
-
-# print(wl)
-# print(wc)
-
-# print(rs)
-# print(cs)
-op = []
+  L.append(l)
 
 for i in range(Q):
-  di = D[i]
-  li = L[i]
+  dir = D[i]
+  l = L[i]
 
-  if di == 'L':
-    use_li = wl[rs]
-    # print(use_li)
-    bis = bisect_left(use_li, cs)
-    if cs - use_li[bis-1] -1 >= li:
-      cs -= li
+  if dir == "L":
+    if rs in R:
+      use_li = R[rs]
     else:
-      cs -= cs - use_li[bis-1] -1
-    op.append((rs, cs))
-
-  if di == 'R':
-    use_li = wl[rs]
-    # print(use_li)
-    bis = bisect_left(use_li, cs)
-    # print(bis)
-    # print(use_li[bis+1] - cs -1)
-    if use_li[bis] - cs -1 >= li:
-      cs += li
+      use_li = [-1, W]
+    bis_be = bisect.bisect_left(use_li, cs)
+    bis_af = bisect.bisect_left(use_li, cs-l)
+    if bis_be == bis_af:
+      cs -= l
     else:
-      cs += use_li[bis] - cs -1
-    op.append((rs, cs))
+      cs = use_li[bis_be-1]+1
 
-  if di == 'U':
-    use_li = wc[cs]
-    # print(use_li)
-    bis = bisect_left(use_li, rs)
-    if rs - use_li[bis-1] -1 >= li:
-      rs -= li
+  if dir == "R":
+    if rs in R:
+      use_li = R[rs]
     else:
-      rs -= rs - use_li[bis-1] -1
-    op.append((rs, cs))
-
-  if di == 'D':
-    use_li = wc[cs]
-    # print(use_li)
-    bis = bisect_left(use_li, rs)
-    if use_li[bis] - rs -1 >= li:
-      rs += li
+      use_li = [-1, W]
+    bis_be = bisect.bisect_right(use_li, cs)
+    bis_af = bisect.bisect_right(use_li, cs+l)
+    if bis_be == bis_af:
+      cs += l
     else:
-      rs += use_li[bis] - rs -1
-    op.append((rs, cs))
+      cs = use_li[bis_be]-1
 
-# print(op)
+  if dir == "U":
+    if cs in C:
+      use_li = C[cs]
+    else:
+      use_li = [-1, H]
+    bis_be = bisect.bisect_left(use_li, rs)
+    bis_af = bisect.bisect_left(use_li, rs-l)
+    if bis_be == bis_af:
+      rs -= l
+    else:
+      rs = use_li[bis_be-1]+1
 
-for i in range(Q):
-  i, j = op[i]
-  print(str(i)+' '+str(j))
+  if dir == "D":
+    if cs in C:
+      use_li = C[cs]
+    else:
+      use_li = [-1, H]
+    bis_be = bisect.bisect_right(use_li, rs)
+    bis_af = bisect.bisect_right(use_li, rs+l)
+    if bis_be == bis_af:
+      rs += l
+    else:
+      rs = use_li[bis_be]-1
+
+  print(rs+1, cs+1)
