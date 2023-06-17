@@ -1,5 +1,6 @@
 # https://strangerxxx.hateblo.jp/entry/20220201/1643705539
 
+# 配列aの[l, r)の部分のnext_permutation
 def next_permutation(a: list, l: int = 0, r: int = None) -> bool:
     # a[l,r)の次の組み合わせ
     if r is None:
@@ -18,12 +19,12 @@ def next_permutation(a: list, l: int = 0, r: int = None) -> bool:
     return False
 
 # 使い方
-# n = 3
-# a = list(range(n))
-# while True:
-#     print(a)
-#     if not next_permutation(a, 0, n):
-#         break
+n = 3
+a = list(range(n))
+while True:
+    print(a)
+    if not next_permutation(a, 0, n):
+        break
 
 
 def prev_permutation(a: list, l: int = 0, r: int = None) -> bool:
@@ -42,3 +43,9 @@ def prev_permutation(a: list, l: int = 0, r: int = None) -> bool:
                         q -= 1
                     return True
     return False
+
+# 使い方
+# while True:
+#     print(a)
+#     if not prev_permutation(a, 0, n):
+#         break

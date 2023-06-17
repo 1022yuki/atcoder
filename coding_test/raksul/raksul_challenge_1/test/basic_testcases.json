@@ -1,0 +1,122 @@
+[
+   {
+      "input": "in/basic/01_random1.in",
+      "output": "out/basic/01_random1.out",
+      "description": "[ステップ1] 社員証発行情報と社員証無効化情報がない場合に正答できる",
+      "description_en": "[step1] Correct when both employee ID issue information and employee ID disable information are not given."
+   },
+   {
+      "input": "in/basic/03_random1.in",
+      "output": "out/basic/03_random1.out",
+      "description": "[ステップ1] 社員証発行情報と社員証無効化情報がない場合に正答できる",
+      "description_en": "[step1] Correct when both employee ID issue information and employee ID disable information are not given."
+   },
+   {
+      "input": "in/basic/11_random1.in",
+      "output": "out/basic/11_random1.out",
+      "description": "[ステップ1] 社員証発行情報と社員証無効化情報がある場合に正答できる",
+      "description_en": "[step1] Correct when both employee ID issue information and employee ID disable information are given."
+   },
+   {
+      "input": "in/basic/13_random1.in",
+      "output": "out/basic/13_random1.out",
+      "description": "[ステップ1] 社員証発行情報と社員証無効化情報がある場合に正答できる",
+      "description_en": "[step1] Correct when both employee ID issue information and employee ID disable information are given."
+   },
+   {
+      "input": "in/basic/21_random1.in",
+      "output": "out/basic/21_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もない場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are not given."
+   },
+   {
+      "input": "in/basic/22_random1.in",
+      "output": "out/basic/22_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もない場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are not given."
+   },
+   {
+      "input": "in/basic/23_random1.in",
+      "output": "out/basic/23_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もない場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are not given."
+   },
+   {
+      "input": "in/basic/24_random1.in",
+      "output": "out/basic/24_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もない場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are not given."
+   },
+   {
+      "input": "in/basic/31_random1.in",
+      "output": "out/basic/31_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card update information is not given."
+   },
+   {
+      "input": "in/basic/32_random1.in",
+      "output": "out/basic/32_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card update information is not given."
+   },
+   {
+      "input": "in/basic/33_random1.in",
+      "output": "out/basic/33_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card update information is not given."
+   },
+   {
+      "input": "in/basic/34_random1.in",
+      "output": "out/basic/34_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card update information is not given."
+   },
+   {
+      "input": "in/basic/41_random1.in",
+      "output": "out/basic/41_random1.out",
+      "description": "[ステップ2] ゲストカード無効化情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card ID disable information is not given."
+   },
+   {
+      "input": "in/basic/42_random1.in",
+      "output": "out/basic/42_random1.out",
+      "description": "[ステップ2] ゲストカード無効化情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card ID disable information is not given."
+   },
+   {
+      "input": "in/basic/43_random1.in",
+      "output": "out/basic/43_random1.out",
+      "description": "[ステップ2] ゲストカード無効化情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card ID disable information is not given."
+   },
+   {
+      "input": "in/basic/44_random1.in",
+      "output": "out/basic/44_random1.out",
+      "description": "[ステップ2] ゲストカード無効化情報がない場合に正答できる",
+      "description_en": "[step2] Correct when guest card ID disable information is not given."
+   },
+   {
+      "input": "in/basic/51_random1.in",
+      "output": "out/basic/51_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もある場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are given."
+   },
+   {
+      "input": "in/basic/52_random1.in",
+      "output": "out/basic/52_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もある場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are given."
+   },
+   {
+      "input": "in/basic/53_random1.in",
+      "output": "out/basic/53_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もある場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are given."
+   },
+   {
+      "input": "in/basic/54_random1.in",
+      "output": "out/basic/54_random1.out",
+      "description": "[ステップ2] ゲストカード更新情報も無効化情報もある場合に正答できる",
+      "description_en": "[step2] Correct when both guest card update information and guest card ID disable information are given."
+   }
+]
