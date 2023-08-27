@@ -1,0 +1,60 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+USE WORK.ALL;
+ENTITY mystate_machine1_test IS
+END mystate_machine1_test;
+ARCHITECTURE mystate_machine1_test_bench OF
+mystate_machine1_test IS
+COMPONENT mystate_machine1
+PORT(x0, x1 : IN std_logic;
+clock : IN std_logic;
+reset : IN std_logic;
+y0, y1 : OUT std_logic);
+END COMPONENT;
+SIGNAL clock, reset,x0, x1, y0, y1 :std_logic;
+BEGIN
+sm1: mystate_machine1 PORT MAP (x0 => x0, x1 => x1, clock
+=> clock, reset => reset,y0 => y0,y1 => y1);
+PROCESS
+BEGIN
+clock <= '0';
+WAIT FOR 50 ns;
+clock <= '1';
+WAIT FOR 50 ns;
+END PROCESS;
+PROCESS
+BEGIN
+x0 <= '0';
+x1 <= '0';
+reset <= '1';
+WAIT FOR 25 ns;
+reset <= '0';
+WAIT FOR 50 ns;
+
+x0 <= '0';
+x1 <= '0';
+WAIT FOR 100 ns;
+x0 <= '0';
+x1 <= '1';
+WAIT FOR 100 ns;
+x0 <= '0';
+x1 <= '1';
+WAIT FOR 100 ns;
+x0 <= '0';
+x1 <= '0';
+WAIT FOR 100 ns;
+x0 <= '0';
+x1 <= '1';
+WAIT FOR 100 ns;
+x0 <= '1';
+x1 <= '1';
+WAIT FOR 100 ns;
+
+WAIT;
+END PROCESS;
+END mystate_machine1_test_bench;
+CONFIGURATION mystate_machine1_test_conf OF
+mystate_machine1_test IS
+FOR mystate_machine1_test_bench
+END for;
+END mystate_machine1_test_conf;

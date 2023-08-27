@@ -28,3 +28,24 @@ class segtree:
 		answerl = self.query(l, r, a, m, u * 2)
 		answerr = self.query(l, r, m, b, u * 2 + 1)
 		return max(answerl, answerr)
+
+N = int(input())
+Bs = []
+# 横は小さい順、縦は大きい順にソート
+for i in range(N):
+    w, h = map(int, input().split())
+    h*=-1
+    Bs.append([w, h])
+Bs.sort()
+
+
+sg_t = segtree((10**5)+1)
+
+for w, h in Bs:
+    h*=-1
+    update = sg_t.query(0, h, 0, sg_t.size, 1)
+    update += 1
+    sg_t.update(h, update)
+
+ans = sg_t.query(0, 10**5+1, 0, sg_t.size, 1)
+print(ans)
