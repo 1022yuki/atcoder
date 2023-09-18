@@ -1,0 +1,89 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+USE WORK.ALL;
+ENTITY mystate_machine1 IS
+PORT(x0 : IN std_logic;
+x1 : IN std_logic;
+clock : IN std_logic;
+reset : IN std_logic;
+y0, y1 : OUT std_logic);
+END mystate_machine1;
+ARCHITECTURE behave OF mystate_machine1 IS
+TYPE states IS (st1, st2, st3, st4);
+SIGNAL present_state : states;
+SIGNAL next_state : states;
+BEGIN
+clkd: PROCESS(clock, reset)
+BEGIN
+IF(reset = '1') THEN
+present_state <= st1;
+ELSIF (clock'EVENT AND clock = '1')THEN
+present_state <= next_state;
+END IF;
+END PROCESS clkd;
+state_trans: PROCESS(present_state, x0,x1)
+BEGIN
+CASE present_state IS
+
+WHEN st1 =>
+IF(x0 = '0' AND x1 = '0') THEN
+y0 <= '0';
+y1 <= '1';
+next_state <= st1;
+ELSIF(x0 = '1' AND x1 = '1') THEN
+y0 <= '0';
+y1 <= '0';
+next_state <= st2;
+ELSE
+y0 <= '1';
+y1 <= '1';
+next_state <= st2;
+END IF;
+
+WHEN st2 =>
+IF(x0 = '1' AND x1 = '0') THEN
+y0 <= '0';
+y1 <= '0';
+next_state <= st2;
+ELSIF(x0 = '0' AND x1 = '1') THEN
+y0 <= '0';
+y1 <= '1';
+next_state <= st2;
+ELSE
+y0 <= '0';
+y1 <= '1';
+next_state <= st3;
+END IF;
+
+WHEN st3 =>
+IF(x0 = '0' AND x1 = '0') THEN
+y0 <= '0';
+y1 <= '1';
+next_state <= st4;
+ELSE
+y0 <= '1';
+y1 <= '0';
+next_state <= st4;
+END IF;
+
+WHEN st4 =>
+IF(x0 = '1' AND x1 = '0') THEN
+y0 <= '1';
+y1 <= '1';
+next_state <= st4;
+ELSIF(x0 = '0' AND x1 = '0') THEN
+y0 <= '1';
+y1 <= '0';
+next_state <= st4;
+ELSIF(x0 = '0' AND x1 = '1') THEN
+y0 <= '0';
+y1 <= '1';
+next_state <= st4;
+ELSE
+y0 <= '0';
+y1 <= '0';
+next_state <= st2;
+END IF;
+END CASE;
+END PROCESS state_trans;
+END behave;

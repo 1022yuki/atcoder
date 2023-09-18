@@ -1,0 +1,1 @@
+N, H = map(int, input().split())

@@ -1,2 +1,2 @@
 # atcoder
-AtCoderのコードを溜めておく
+AtCoderなど競プロ関連のコードを溜めておく
