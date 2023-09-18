@@ -1,0 +1,1 @@
+sortedSet = sortedSet[:ind]
