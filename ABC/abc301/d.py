@@ -9,11 +9,11 @@ def to_bin(n: int) -> int:
     ans += str(wari%2)
   return ans
 
+
+
 S = input()
 N = int(input())
 
 bin_N_str = to_bin(N)
 
-ans_bin = ''
-
-for i in range():
+print(bin_N_str[(len(bin_N_str)-len(S)):])
