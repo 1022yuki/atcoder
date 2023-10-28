@@ -43,6 +43,8 @@ for i in range(ltp):
 
 ans = []
 for i in range(N):
+  if abs(len(S[i])-ltp)>1:
+    continue
   if len(S[i])==ltp:
     if S[i] in setT3:
       ans.append(i+1)
@@ -52,8 +54,6 @@ for i in range(N):
   if len(S[i])==ltp-1:
     if S[i] in setT1:
       ans.append(i+1)
-  # if S[i] in setT:
-  #   ans.append(i+1)
 
 print(len(ans))
 print(*ans)
