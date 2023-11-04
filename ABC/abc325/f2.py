@@ -35,8 +35,7 @@ for n1 in range(k1+1):
   ci = c1*n1+c2*dp[N][n1]
   ans = min(ans, ci)
 
-# print(dp)
 if ans==INF:
-  print(-1)
+  print(-1) 
 else:
   print(ans)
