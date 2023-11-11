@@ -26,4 +26,5 @@ for k in range(2, N+1):
 for k in range(1, N+1):
   maxRate = max(maxRate, dp[k][N-1]/bunbo[k] - 1200/(k**0.5))
 
+print(dp)
 print(maxRate)
