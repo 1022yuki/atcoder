@@ -55,30 +55,3 @@ class WeightedUnionFind:
         for member in range(self.n):
             group_members[self.find(member)].append(member)
         return group_members
-    
-
-N, Q = map(int, input().split())
-
-Qs = []
-for i in range(Q):
-  a, b, d = map(int, input().split())
-  Qs.append([a, b, d])
-
-X = [0]*N
-
-wuf = WeightedUnionFind(N)
-
-Ans = []
-
-for i in range(Q):
-  a, b, d = Qs[i]
-  if wuf.same(a, b):
-    if wuf.diff(b, a) != d:
-      continue
-    else:
-      Ans.append(i+1)
-  else:
-    wuf.union(b, a, d)
-    Ans.append(i+1)
-
-print(*Ans)
