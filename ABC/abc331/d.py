@@ -34,8 +34,6 @@ for j in range(1, N+1):
   for i in range(1, N+1):
     sum_grid[i][j] += sum_grid[i-1][j]
 
-# print(sum_grid)
-
 for i in range(Q):
   a, b, c, d = Qs[i]
   sho_a = a//N
@@ -46,8 +44,6 @@ for i in range(Q):
   rem_c = (c+1)%N
   sho_d = (d+1)//N
   rem_d = (d+1)%N
-  # print(sho_a, sho_b, sho_c, sho_d)
-  # print(rem_a, rem_b, rem_c, rem_d)
 
   add_migisita = 0
   add_migisita += sum_grid[N][N]*sho_c*sho_d
@@ -55,19 +51,11 @@ for i in range(Q):
   add_migisita += sum_grid[N][rem_d]*sho_c
   add_migisita += sum_grid[rem_c][N]*sho_d
   del_hidarisita = 0
-  # del_hidarisita += sum_grid[N][N]*sho_b*sho_c
-  # del_hidarisita += sum_grid[rem_b][rem_c]
-  # del_hidarisita += sum_grid[N][rem_c]*sho_b
-  # del_hidarisita += sum_grid[rem_b][N]*sho_c
   del_hidarisita += sum_grid[N][N]*sho_c*sho_b
   del_hidarisita += sum_grid[rem_c][rem_b]
   del_hidarisita += sum_grid[N][rem_b]*sho_c
   del_hidarisita += sum_grid[rem_c][N]*sho_b
   del_nigiue = 0
-  # del_nigiue += sum_grid[N][N]*sho_a*sho_d
-  # del_nigiue += sum_grid[rem_a][rem_d]
-  # del_nigiue += sum_grid[N][rem_d]*sho_a
-  # del_nigiue += sum_grid[rem_a][N]*sho_d
   del_nigiue += sum_grid[N][N]*sho_a*sho_d
   del_nigiue += sum_grid[rem_a][rem_d]
   del_nigiue += sum_grid[N][rem_d]*sho_a
@@ -77,6 +65,5 @@ for i in range(Q):
   add_hidariue += sum_grid[rem_a][rem_b]
   add_hidariue += sum_grid[N][rem_b]*sho_a
   add_hidariue += sum_grid[rem_a][N]*sho_b
-  # print(add_migisita, add_hidariue)
-  # print(del_hidarisita, del_nigiue)
+
   print(add_migisita-del_hidarisita-del_nigiue+add_hidariue)

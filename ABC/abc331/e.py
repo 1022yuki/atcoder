@@ -148,21 +148,18 @@ for i in range(L):
     Bad[c-1].append(d-1)
 
 sorted_B = sorted(B)
-Good = []
 sms = SortedMultiset(B)
-for i in range(N):
-    Good.append(sms)
 
 ans = -1
 # print(Good)
 for i in range(N):
     # print(Good)
     for bad in Bad[i]:
-        Good[i].discard(B[bad])
+        sms.discard(B[bad])
     # print(Good)
-    if len(Good[i]) != 0:
-      ans = max(ans, A[i]+Good[i][-1])
+    if len(sms) != 0:
+      ans = max(ans, A[i]+sms[-1])
     for bad in Bad[i]:
-        Good[i].add(B[bad])
+        sms.add(B[bad])
 
 print(ans)
